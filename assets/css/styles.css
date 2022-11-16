@@ -302,3 +302,26 @@ footer p{
     flex-basis: 23%;
     cursor: pointer;
 }
+
+.single-product input:focus{
+    outline: none;
+}
+
+.single-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.single-product .buy-btn{
+    background-color: rgb(0, 68, 68);
+    color: #d8d8d8;
+    opacity: 1;
+    transition: 0.4s all;
+}
+.single-product .buy-btn:hover{
+    background-color:#1d1d1d;
+    
+}
