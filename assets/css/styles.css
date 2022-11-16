@@ -58,10 +58,11 @@ button:hover{
     left: 0;
     display: flex;
     justify-content: space-between;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-light .navbar-nav .nav-link{
-    padding: 0 20px;
+    padding: 0 5px;
     color: black;
     transition: 0.4s ease;
 }
@@ -74,15 +75,23 @@ button:hover{
 }
 
 .navbar i {
-    font-size: 1.2rem;
-    padding: 0 0.7px;
+    font-size: 0.7rem;
+    padding: 0 0.5px;
     transition: 0.4s ease;
     font-weight: 500;
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: 7px;
 }
 
-@media only screen and (max-width: 900px){
+.navbar img{
+    width: 50%;
+
+}
+
+@media only screen and (max-width: 990px){
+    .navbar-toggles{
+        margin-right: 10px;
+    }
     .nav-buttons{
         margin: 10px;
     }
@@ -100,19 +109,22 @@ button:hover{
 }
 
 #home{
-    background-image: url();
+    background-image: url("../images/rana-sawalha-IhuHLIxS_Tk-unsplash.jpg");
     width: 100%;
     height: 100vh;
-    background-size: cover;
+    background-size:cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    background-position-x: 0px;
+    background-position-y: center;
+    background-repeat: no-repeat;
 }
 
 #new .one img{
-    width: 100%;
-    height: 600px;
+    width: 80%;
+    height: 550px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -161,6 +173,8 @@ button:hover{
 
 .product img{
     transition: 0.3s all;
+    width: 90%;
+    height: 300px;
 
 }
 
@@ -199,14 +213,14 @@ hr{
 
 /*Banner*/
 #banner{
-    background-image: url();
+    background-image: url("../images/artboard-studio-B40ztSGQTZY-unsplash.jpg");
     width: 100%;
     height: 60vh;
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items:center;
     background-position-x: center;
     background-position-y: 80px;
     background-repeat: no-repeat;
@@ -223,4 +237,48 @@ hr{
 
 #banner button:hover{
     background-color: #1d1d1d;
+}
+
+#banner .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+footer{
+    background-color: #1d1d1d;
+}
+
+footer h5{
+    color: #d8d8d8;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+footer li {
+    padding-bottom: 4px;
+
+}
+
+footer a {
+    font-size: 0.8rem;
+    color: gray;
+    text-decoration: none;
+}
+
+footer a:hover{
+    color: #d8d8d8;
+}
+
+footer .socials {
+    font-size: 1.5rem;
+    font-weight:800;
+    color: gray;
+    text-decoration: none;
+}
+
+footer p{
+    color: #d8d8d8;
 }
