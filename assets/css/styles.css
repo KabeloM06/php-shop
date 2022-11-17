@@ -412,3 +412,26 @@ th:last-child{
     display: flex;
     justify-content: flex-end;
 }
+
+/*Login start*/
+#login-form{
+    width: 50%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid rgb(0, 68, 68);
+}
+
+#login-form input{
+    width: 50%;
+    margin: 5px auto;
+}
+
+#login-form #login-btn{
+    background-color: rgb(0, 68, 68);
+    color: #d8d8d8;
+}
+
+#login-form #register-url{
+    color: rgb(0, 68, 68);
+}
