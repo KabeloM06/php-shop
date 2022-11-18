@@ -431,6 +431,10 @@ th:last-child{
     background-color: rgb(0, 68, 68);
     color: #d8d8d8;
 }
+#login-form #login-btn:hover{
+    background-color: #1d1d1d;
+    color: #d8d8d8;
+}
 
 #login-form #register-url{
     color: rgb(0, 68, 68);
@@ -457,4 +461,30 @@ th:last-child{
 
 #registration-form #login-url{
     color: rgb(0, 68, 68);
+}
+
+#registration-form #register-btn:hover{
+    background-color: #1d1d1d;
+    color: #d8d8d8;
+}
+
+/*Account form*/
+#account-form{
+    width: 50%;
+    margin: 35px auto;
+    text-align: center;
+    padding: 20px;
+}
+#account-form input{
+    margin: 5px auto;
+}
+
+#account-form #change-password-btn{
+    color:#d8d8d8;
+    background-color: rgb(0, 68, 68);
+}
+
+.account-info #order-btn,#logout-btn{
+    color: rgb(0, 68, 68);
+    text-decoration: none;
 }
