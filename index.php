@@ -123,8 +123,15 @@
             </p>
         </div>
         <div class="row mx-auto container-fluid">
+
+        <?php
+            include('server/get_featured_products.php');
+        ?>
+        <?php
+            while($row= $featured_products->fetch_assoc()) {
+        ?>
             <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Lace-up-Sneakers-NAVY-505479330.jpg" class="img-fluid mb-3" alt="">
+                <img src="assets/images/<?php echo $row['product_image'] ?>" class="img-fluid mb-3" alt="">
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -133,56 +140,16 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name">
-                    Navy Sneakers
+                    <?php echo $row['product_name'] ?>
                 </h5>
-                <h4 class="p-price">R600</h4>
+                <h4 class="p-price">
+                <?php echo $row['product_price'] ?>
+                </h4>
                 <button class="buy-btn">Buy Now</button>
             </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Adventure-Outdoor-Sandals-BROWN-505479460-side.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    Brown Sandals
-                </h5>
-                <h4 class="p-price">R400</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Australian-Cotton-Stripe-Pique-Polo-NAVY-505691304.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    Polo Shirt
-                </h5>
-                <h4 class="p-price">R700</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/StayNew-Slim-Fit-V-neck-Cotton-T-shirt-ICE-506080516-top.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    V-Neck T-Shirt
-                </h5>
-                <h4 class="p-price">R150</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
+
+        <?php } ?>    
+            
         </div>
     </section>
     <!--Featured End-->
