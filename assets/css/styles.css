@@ -553,3 +553,7 @@ th:last-child{
         margin: 10px auto;
     }
 }
+
+#contact h6{
+    color: rgb(0, 68, 68);
+}
