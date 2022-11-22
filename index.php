@@ -143,7 +143,7 @@
                     <?php echo $row['product_name'] ?>
                 </h5>
                 <h4 class="p-price">
-                <?php echo $row['product_price'] ?>
+                R <?php echo $row['product_price'] ?>
                 </h4>
                 <button class="buy-btn">Buy Now</button>
             </div>
@@ -176,8 +176,14 @@
             </p>
         </div>
         <div class="row mx-auto container-fluid">
+        <?php
+            include('server/get_shirts.php');
+        ?>
+        <?php
+            while($row= $shirts_products->fetch_assoc()) {
+        ?>
             <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Australian-Cotton-Stripe-Pique-Polo-NAVY-505691304.jpg" class="img-fluid mb-3" alt="">
+                <img src="assets/images/<?php echo $row['product_image'] ?>" class="img-fluid mb-3" alt="">
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -186,56 +192,13 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name">
-                    Navy Sneakers
+                    <?php echo $row['product_name'] ?>
                 </h5>
-                <h4 class="p-price">R600</h4>
+                <h4 class="p-price"><?php echo $row['product_price'] ?></h4>
                 <button class="buy-btn">Buy Now</button>
             </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Micro-Stripe-Pima-Crew-T-Shirt-MID-GREY-505636384.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    Black Sneakers
-                </h5>
-                <h4 class="p-price">R600</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/StayNew-Slim-Fit-V-neck-Cotton-T-shirt-ICE-506080516.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    White Sneakers
-                </h5>
-                <h4 class="p-price">R600</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Micro-Stripe-Pima-Crew-T-Shirt-MID-GREY-505636384-styled.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    Grey Sneakers
-                </h5>
-                <h4 class="p-price">R600</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
+            <?php } ?>
+            
         </div>
     </section>
     <!--Clothes End-->
@@ -252,8 +215,12 @@
             </p>
         </div>
         <div class="row mx-auto container-fluid">
+            <?php include "server/get_footware.php" ?>
+            <?php
+            while($row= $footware_products->fetch_assoc()) {
+        ?>
             <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Lace-up-Sneakers-NAVY-505479330.jpg" class="img-fluid mb-3" alt="">
+                <img src="assets/images/<?php echo $row['product_image'] ?>" class="img-fluid mb-3" alt="">
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -262,56 +229,13 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name">
-                    Navy Sneakers
+                    <?php echo $row['product_name'] ?>
                 </h5>
-                <h4 class="p-price">R600</h4>
+                <h4 class="p-price">R <?php echo $row['product_price'] ?></h4>
                 <button class="buy-btn">Buy Now</button>
             </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Adventure-Outdoor-Sandals-BROWN-505479460-styled.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    Black Sneakers
-                </h5>
-                <h4 class="p-price">R600</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Comfort-Derby-Shoes-BLACK-506058246.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    White Sneakers
-                </h5>
-                <h4 class="p-price">R600</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Cursive-Logo-Flip-Flops-NAVY-506214520.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    Grey Sneakers
-                </h5>
-                <h4 class="p-price">R600</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
+            <?php } ?>
+            
         </div>
     </section>
     <!--Shoes End-->
@@ -328,8 +252,12 @@
             </p>
         </div>
         <div class="row mx-auto container-fluid">
+            <?php include "server/get_accessories.php" ?>
+            <?php
+            while($row= $accessories_products->fetch_assoc()) {
+        ?>
             <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Badge-Logo-Baseball-Cap-GREY-506064268-angle.jpg" class="img-fluid mb-3" alt="">
+                <img src="assets/images/<?php echo $row['product_image'] ?>" class="img-fluid mb-3" alt="">
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -338,56 +266,13 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h5 class="p-name">
-                    Navy Sneakers
+                <?php echo $row['product_name'] ?>
                 </h5>
-                <h4 class="p-price">R600</h4>
+                <h4 class="p-price">R <?php echo $row['product_price'] ?></h4>
                 <button class="buy-btn">Buy Now</button>
             </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Flat-Cap-X-NAVY-506085200-angle.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    Black Sneakers
-                </h5>
-                <h4 class="p-price">R600</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Straw-Panama-Hat-X-NATURAL-506065236-angle.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    White Sneakers
-                </h5>
-                <h4 class="p-price">R600</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img src="assets/images/Badge-Logo-Baseball-Cap-GREY-506064268-styled.jpg" class="img-fluid mb-3" alt="">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">
-                    Grey Sneakers
-                </h5>
-                <h4 class="p-price">R600</h4>
-                <button class="buy-btn">Buy Now</button>
-            </div>
+            <?php }?>
+            
         </div>
     </section>
     <!--Accessories end-->

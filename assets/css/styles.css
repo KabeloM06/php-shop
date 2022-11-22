@@ -184,15 +184,15 @@ button:hover{
 
 .product .buy-btn{
     background-color: rgb(0, 68, 68);
-    transform: translateY(50px);
-    opacity: 0;
+    /* transform: translateY(50px); */
+    /* opacity: 0; */
     transition: 0.3s all;
 }
 
-.product:hover .buy-btn{
+/* .product:hover .buy-btn{
     transform: translateY(0px);
     opacity: 1;
-}
+} */
 
 hr{
     width: 200px;
