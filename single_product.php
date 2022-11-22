@@ -1,3 +1,21 @@
+<?php 
+include('server/connection.php');
+
+if(isset($_GET['product_id'])){
+    $product_id = $_GET['product_id'];
+
+    $stmt = $conn->prepare("SELECT * FROM `products` WHERE product_id = ?");
+    $stmt->bind_param("i",$product_id);
+
+    $stmt->execute();
+
+    $product = $stmt->get_result();
+} else{
+    // in case of no product ID
+    header('location: index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +32,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3">
     <div class="container">
         <div>
-            <a href="index.html" class="navbar-brand">ShopItAll</a>
+            <a href="index.php" class="navbar-brand">ShopItAll</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +41,7 @@
         <div class="collapse navbar-collapse nav-buttons nowrap" id="navbarMain">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.php" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="shop.html" class="nav-link">Shop</a>
@@ -49,35 +67,35 @@
 
 <section class="container single-product my-5 pt-5">
     <div class="row mt-5">
+        <?php while($row = $product->fetch_assoc()){ ?>
         <div class="col-lg-5 col-md-6 col-sm-12">
-            <img id="mainImg" class="img-fluid w-100 pb-1" src="assets/images/Adventure-Outdoor-Sandals-BROWN-505479460-side.jpg" alt="">
+            <img id="mainImg" class="img-fluid w-100 pb-1" src="assets/images/<?php echo $row['product_image'] ?>" alt="">
             <div class="small-img-group">
                 <div class="small-img-col">
-                    <img src="assets/images/Comfort-Derby-Shoes-BLACK-506058246.jpg" width="100%" class="small-img" alt="">
+                    <img src="assets/images/<?php echo $row['product_image2'] ?>" width="100%" class="small-img" alt="">
                 </div>
                 <div class="small-img-col">
-                    <img src="assets/images/Adventure-Outdoor-Sandals-BROWN-505479460.jpg" width="100%" class="small-img" alt="">
+                    <img src="assets/images/<?php echo $row['product_image3'] ?>" width="100%" class="small-img" alt="">
                 </div>
                 <div class="small-img-col">
-                    <img src="assets/images/Badge-Logo-Baseball-Cap-GREY-506064268-angle.jpg" width="100%" class="small-img" alt="">
+                    <img src="assets/images/<?php echo $row['product_image4'] ?>" width="100%" class="small-img" alt="">
                 </div>
-                <div class="small-img-col">
-                    <img src="assets/images/Badge-Logo-Baseball-Cap-GREY-506064268.jpg" width="100%" class="small-img" alt="">
-                </div>
+                
             </div>
         </div>
+        
 
         <!--Product Details-->
         <div class="col-lg-6 col-md-12 col-12">
             <h6>Shoes</h6>
-            <h3>Footware</h3>
-            <h2>R500</h2>
+            <h3><?php echo $row['product_name'] ?></h3>
+            <h2><?php echo $row['product_price'] ?></h2>
             <input type="number" value="1">
             <button class="buy-btn">Add To Cart</button>
             <h4 class="mt-5 mb-5">Product Details</h4>
-            <span>The details will be displayed here</span>
+            <span><?php echo $row['product_description'] ?></span>
         </div>
-
+        <?php }?>
     </div>
 
 </section>
