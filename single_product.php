@@ -72,6 +72,9 @@ if(isset($_GET['product_id'])){
             <img id="mainImg" class="img-fluid w-100 pb-1" src="assets/images/<?php echo $row['product_image'] ?>" alt="">
             <div class="small-img-group">
                 <div class="small-img-col">
+                    <img src="assets/images/<?php echo $row['product_image'] ?>" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-img-col">
                     <img src="assets/images/<?php echo $row['product_image2'] ?>" width="100%" class="small-img" alt="">
                 </div>
                 <div class="small-img-col">

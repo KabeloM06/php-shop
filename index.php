@@ -35,8 +35,8 @@
                         <a href="contact.html" class="nav-link">Conctact Us</a>
                     </li>
                     <li class="nav-item">
-                        <i class="fas fa-shopping-cart"><a href="cart.html"></a></i>
-                        <i class="fas fa-user"><a href="account.html"></a></i>
+                        <i class="fas fa-shopping-cart"><a href="cart.php"></a></i>
+                        <i class="fas fa-user"><a href="account.php"></a></i>
                     </li>
                     <li class="nav-item">
                         
@@ -130,7 +130,7 @@
         <?php
             while($row= $featured_products->fetch_assoc()) {
         ?>
-            <div onclick="window.location.href='single_product.html'" class="product text-center col-lg-3 col-md-4 col-sm-12">
+            <div onclick="window.location.href='single_product.php'" class="product text-center col-lg-3 col-md-4 col-sm-12">
                 <img src="assets/images/<?php echo $row['product_image'] ?>" class="img-fluid mb-3" alt="">
                 <div class="star">
                     <i class="fas fa-star"></i>
