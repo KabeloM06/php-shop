@@ -1,3 +1,60 @@
+<?php
+session_start();
+//check if user came using single_product form Add To Cart or not
+if(isset($_POST['add_to_cart'])){
+    if(isset($_SESSION['cart'])){
+        // If cart is not empty
+        // Check if the new product is already in the cart
+        $products_array_ids = array_column($_SESSION['cart'], "product_id");//returns all product id's already in the cart
+        // checks if the new product id is already in the array list
+        if(!in_array($_POST['product_id'], $products_array_ids)){
+            
+            // If product is not in cart already
+            $product_id = $_POST['product_id'];
+            $product_name = $_POST['product_name'];
+            $product_price = $_POST['product_price'];
+            $product_image = $_POST['product_image'];
+            $product_quantity = $_POST['product_quantity'];
+
+            //place in a single array
+            $product_array = array(
+                'product_id'=>$product_id,
+                'product_name'=>$product_name,
+                'product_price'=>$product_price,
+                'product_image'=>$product_image,
+                'product_quantity'=>$product_quantity
+            );
+
+            $_SESSION['cart'][$product_id]=$product_array;
+        }else{
+            echo '<script>alert("This product is already in your cart");</script>';
+            
+        }
+    }else{
+        //If this is the first product. Cart is empty
+        $product_id = $_POST['product_id'];
+        $product_name = $_POST['product_name'];
+        $product_price = $_POST['product_price'];
+        $product_image = $_POST['product_image'];
+        $product_quantity = $_POST['product_quantity'];
+
+        //place in a single array
+        $product_array = array(
+            'product_id'=>$product_id,
+            'product_name'=>$product_name,
+            'product_price'=>$product_price,
+            'product_image'=>$product_image,
+            'product_quantity'=>$product_quantity
+        );
+
+        $_SESSION['cart'][$product_id]=$product_array;
+    }
+}else{
+    //take them back to index page
+    header('location: index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +71,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3">
         <div class="container">
             <div>
-                <a href="index.html" class="navbar-brand">ShopItAll</a>
+                <a href="index.php" class="navbar-brand">ShopItAll</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,7 +80,7 @@
             <div class="collapse navbar-collapse nav-buttons nowrap" id="navbarMain">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="shop.html" class="nav-link">Shop</a>
@@ -60,20 +117,27 @@
                 <th>Quantity</th>
                 <th>Subtotal</th>
             </tr>
+
+            <?php
+            foreach($_SESSION['cart'] as $key => $value){
+
+            
+            ?>
+
             <tr>
                 <td>
                     <div class="product-info">
-                        <img src="assets/images/Cursive-Logo-Flip-Flops-NAVY-506214520.jpg" alt="">
+                        <img src="assets/images/<?php echo $value['product_image'];?>" alt="">
                         <div>
-                            <p>Flip Flops</p>
-                            <small><span>R</span>250</small>
+                            <p><?php echo $value['product_name'];?></p>
+                            <small><span>R</span><?php echo $value['product_price'];?></small>
                             <br>
                             <a class="remove-btn" href="#">Remove</a>
                         </div>
                     </div>
                 </td>
                 <td>
-                    <input type="number" value="1"/>
+                    <input type="number" value="<?php echo $value['product_quantity'];?>"/>
                     <a class="edit-btn" href="single_product.html">Edit</a>
 
                 </td>
@@ -82,50 +146,8 @@
                     <span class="product-price">250</span>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <div class="product-info">
-                        <img src="assets/images/Badge-Logo-Baseball-Cap-GREY-506064268.jpg" alt="">
-                        <div>
-                            <p>Cap</p>
-                            <small><span>R</span>100</small>
-                            <br>
-                            <a class="remove-btn" href="#">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <input type="number" value="1"/>
-                    <a class="edit-btn" href="single_product.html">Edit</a>
-
-                </td>
-                <td>
-                    <span>R</span>
-                    <span class="product-price">100</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="product-info">
-                        <img src="assets/images/Adventure-Outdoor-Sandals-BROWN-505479460.jpg" alt="">
-                        <div>
-                            <p>Sandals</p>
-                            <small><span>R</span>500</small>
-                            <br>
-                            <a class="remove-btn" href="#">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <input type="number" value="1"/>
-                    <a class="edit-btn" href="single_product.html">Edit</a>
-
-                </td>
-                <td>
-                    <span>R</span>
-                    <span class="product-price">500</span>
-                </td>
-            </tr>
+            <?php } ?>
+            
         </table>
 
         <div class="cart-total">

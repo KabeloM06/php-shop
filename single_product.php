@@ -68,6 +68,8 @@ if(isset($_GET['product_id'])){
 <section class="container single-product my-5 pt-5">
     <div class="row mt-5">
         <?php while($row = $product->fetch_assoc()){ ?>
+            
+                
         <div class="col-lg-5 col-md-6 col-sm-12">
             <img id="mainImg" class="img-fluid w-100 pb-1" src="assets/images/<?php echo $row['product_image'] ?>" alt="">
             <div class="small-img-group">
@@ -90,14 +92,21 @@ if(isset($_GET['product_id'])){
 
         <!--Product Details-->
         <div class="col-lg-6 col-md-12 col-12">
-            <h6>Shoes</h6>
+            <h6 class="text-capitalize"><?php echo $row['product_category']; ?></h6>
             <h3><?php echo $row['product_name'] ?></h3>
             <h2><?php echo $row['product_price'] ?></h2>
-            <input type="number" value="1">
-            <button class="buy-btn">Add To Cart</button>
+            <form method="POST" action="cart.php">
+                <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+                <input type="hidden" name="product_image" value="<?php echo $row['product_image']; ?>">
+                <input type="hidden" name="product_name" value="<?php echo $row['product_name'] ?>">
+                <input type="hidden" name="product_price" value="<?php echo $row['product_price'] ?>">
+            <input type="number" value="1" name="product_quantity">
+            <button class="buy-btn" type="submit" name="add_to_cart">Add To Cart</button>
+            </form>
             <h4 class="mt-5 mb-5">Product Details</h4>
             <span><?php echo $row['product_description'] ?></span>
         </div>
+        
         <?php }?>
     </div>
 
