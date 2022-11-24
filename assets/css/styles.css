@@ -330,9 +330,6 @@ footer p{
     
 }
 
-.single-product h6{
-    
-}
 
 /*Cart Start*/
 .cart table{
@@ -375,6 +372,9 @@ footer p{
     color: rgb(0, 68, 68);
     text-decoration: none;
     font-size: 15px;
+    background-color: white;
+    border: none;
+    width: 100%;
 }
 
 .cart .edit-btn{
