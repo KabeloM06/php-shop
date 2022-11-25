@@ -138,11 +138,12 @@ else{
                         <img src="assets/images/<?php echo $value['product_image'];?>" alt="">
                         <div>
                             <p><?php echo $value['product_name'];?></p>
-                            <small><span>R</span><?php echo $value['product_price'];?></small>
+                            <small><span>R </span><?php echo $value['product_price'];?></small>
                             <br>
                             <form action="cart.php" method="POST">
-                                <input type="hidden" name="product_id" value="<?php echo $value['product_id'];?>">
+                                
                                 <input type="submit" name="remove_item" class="remove-btn" href="#" value="Remove">
+                                <input type="hidden" name="product_id" class="remove-btn-id" value="<?php echo $value['product_id'];?>">
                             </form>
                         </div>
                     </div>

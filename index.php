@@ -70,42 +70,34 @@
 
     <!--New start-->
     <section id="new" class="w-100">
-        <div class="row p-0 m-0">
-            <div onclick="window.location.href='single_product.html'" class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img class="img-fluid" src="assets/images/Lace-up-Sneakers-GREY-505479330-side.jpg" alt="">
-                <div class="details">
-                    <h2 >
-                        Lace Up Sneakers
-                    </h2>
-                    <button class="text-uppercase">
-                        Add To Cart
-                    </button>
-                </div>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img class="img-fluid" src="assets/images/Lace-up-Sneakers-GREY-505479330-side.jpg" alt="">
-                <div class="details">
-                    <h2 >
-                        Lace Up Sneakers
-                    </h2>
-                    <button class="text-uppercase">
-                        Add To Cart
-                    </button>
-                </div>
-            </div>
-            <div onclick="window.location.href='single_product.html'" class="one col-lg-4 col-md-12 col-sm-12 p-0">
-                <img class="img-fluid" src="assets/images/Lace-up-Sneakers-GREY-505479330-side.jpg" alt="">
-                
-                    <div class="details">
-                        <h2>
-                            Lace Up Sneakers
-                        </h2>
-                        <button class="text-uppercase">
-                            Add To Cart
-                        </button>
-                    </div>
-                    
-                </div>
+        <div class="card m-3 p-3 mx-auto">
+            <div class="carousel slide carousel-fade" id="carouselExampleControls" data-bs-ride="carousel">
+    <div class="carousel-inner text-center">
+        <div class="carousel-item active">
+            <img src="assets/images/shoe-slider.jpg" class="d-block w-100" alt="Brown Sandals">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/images/cap-slider.jpg" class="d-block w-100" alt="Brown Sandals">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/images/Sandals-slider.jpg" class="d-block w-100" alt="Brown Sandals">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/images/slops-slider.jpg" class="d-block w-100" alt="Brown Sandals">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/images/sneakers-slider.jpg" class="d-block w-100" alt="Brown Sandals">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="">Next</span>    
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        
+    </button>
             </div>
         </div>
     </section>
