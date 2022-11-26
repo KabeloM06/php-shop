@@ -52,9 +52,15 @@ if(isset($_POST['add_to_cart'])){
         $_SESSION['cart'][$product_id]=$product_array;
     }
 
+    //calculate total
+    calculateCartTotal();
+
 }else if(isset($_POST['remove_item'])){
     $product_id = $_POST['product_id'];
     unset($_SESSION['cart'][$product_id]); //remove product from cart
+
+    //calculate total
+    calculateCartTotal();
 } else if(isset($_POST['edit_quantity'])) { // to edit the quantity in the cart
     $product_quantity = $_POST['product_quantity'];
     $product_id = $_POST['product_id'];
@@ -64,11 +70,30 @@ if(isset($_POST['add_to_cart'])){
 
     $_SESSION['cart'][$product_id] = $product_array;
 
+    //calculate total
+    calculateCartTotal();
+
 }
+
+
 
 else{
     //take them back to index page
     header('location: index.php');
+}
+
+// Work on the total
+function calculateCartTotal(){
+    $total = 0;
+    foreach($_SESSION['cart'] as $key => $value){
+        $product = $_SESSION['cart'][$key];
+        $price = $product['product_price'];
+        $quantity = $product['product_quantity'];
+
+        $total = $total + ($price * $quantity);
+    }
+
+    $_SESSION['total'] = $total;
 }
 ?>
 
@@ -180,7 +205,7 @@ else{
                 
                 <tr>
                     <td>Total</td>
-                    <td>R1500</td>
+                    <td>R <?php echo $_SESSION['total']; ?></td>
                 </tr>
             </table>
         </div>
