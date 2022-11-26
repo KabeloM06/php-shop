@@ -163,12 +163,12 @@ else{
                     <form action="cart.php" method="POST">
                         <input type="hidden" name="product_id" value="<?php echo $value['product_id']?>">
                         <input type="number" name="product_quantity" value="<?php echo $value['product_quantity'];?>"/>
-                        <input type="submit" class="edit-btn" value="edit" name="edit_quantity">
+                        <input type="submit" class="edit-btn" value="Save Quantity" name="edit_quantity">
                     </form>
                 </td>
                 <td>
                     <span>R</span>
-                    <span class="product-price">250</span>
+                    <span class="product-price"><?php echo $value['product_quantity']*$value['product_price'] ?></span>
                 </td>
             </tr>
             <?php } ?>
