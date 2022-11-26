@@ -125,7 +125,7 @@ button:hover{
 
 
 #new .card {
-    width: 65%;
+    width: 50%;
     height: 100%;
 }
 #new .card img{
@@ -353,6 +353,9 @@ footer p{
     color: rgb(0, 68, 68);
     text-decoration: none;
     font-size: 17px;
+    background-color: white;
+    border: none;
+    width: 50px;
 }
 
 .cart .product-info p{

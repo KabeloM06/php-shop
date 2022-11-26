@@ -74,16 +74,16 @@
             <div class="carousel slide carousel-fade" id="carouselExampleControls" data-bs-ride="carousel">
     <div class="carousel-inner text-center">
         <div class="carousel-item active">
-            <img src="assets/images/shoe-slider.jpg" class="d-block w-100" alt="Brown Sandals">
+            <img src="assets/images/shoe-slider.jpg" class="d-block w-100" alt="Black Shoe">
         </div>
         <div class="carousel-item">
-            <img src="assets/images/cap-slider.jpg" class="d-block w-100" alt="Brown Sandals">
+            <img src="assets/images/cap-slider.jpg" class="d-block w-100" alt="White cap">
         </div>
         <div class="carousel-item">
             <img src="assets/images/Sandals-slider.jpg" class="d-block w-100" alt="Brown Sandals">
         </div>
         <div class="carousel-item">
-            <img src="assets/images/slops-slider.jpg" class="d-block w-100" alt="Brown Sandals">
+            <img src="assets/images/slops-slider.jpg" class="d-block w-100" alt="Flip flops">
         </div>
         <div class="carousel-item">
             <img src="assets/images/sneakers-slider.jpg" class="d-block w-100" alt="Brown Sandals">
