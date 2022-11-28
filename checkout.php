@@ -48,7 +48,7 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
                         <a href="contact.html" class="nav-link">Conctact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
                         <a href="account.html"><i class="fas fa-user"></i></a>
                     </li>
                     <li class="nav-item">
@@ -67,7 +67,7 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
             <hr class="mx-auto">
         </div>
         <div class="mx-auto container">
-            <form id="checkout-form" action="place_order.php" method="POST">
+            <form id="checkout-form" action="server/place_order.php" method="POST">
                 <div class="form-group checkout-small">
                     <label>Name</label>
                     <input id="checkout-name" type="text" class="form-control" name="name" placeholder="Name" required>
