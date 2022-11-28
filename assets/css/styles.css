@@ -396,6 +396,10 @@ th:last-child{
     justify-content: flex-end;
 }
 
+.total-text span{
+    font-weight: 600;
+}
+
 /*Login start*/
 #login-form{
     width: 50%;
