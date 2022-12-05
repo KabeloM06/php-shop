@@ -34,13 +34,18 @@ if(isset($_POST['place_order'])){
         $product_quantity = $product['product_quantity'];
         $product_image = $product['product_image'];
 
+        // store items in order_items table of database
         $cart_stmt = $conn->prepare("INSERT INTO `order_items` (order_id,product_id,product_name,product_image,product_price,product_quantity,user_id,order_date)
                         VALUES(?,?,?,?,?,?,?,?)");
 
         $cart_stmt->bind_param("iissiiis",$order_id,$product_id,$product_name,$product_image,$product_price,$product_quantity,$user_id,$order_date);
 
         $cart_stmt->execute();
+
     }
+
+    //Take user to payments page
+    header('location: ../payment.php?order_status=Order placed successfully');
     
 }
 

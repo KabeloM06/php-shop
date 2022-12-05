@@ -73,13 +73,9 @@ if(isset($_POST['add_to_cart'])){
     //calculate total
     calculateCartTotal();
 
-}
-
-
-
-else{
+}else{
     //take them back to index page
-    header('location: index.php');
+    //header('location: index.php');
 }
 
 // Work on the total
@@ -134,8 +130,8 @@ function calculateCartTotal(){
                         <a href="contact.html" class="nav-link">Conctact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                        <a href="account.html"><i class="fas fa-user"></i></a>
+                        <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="account.php"><i class="fas fa-user"></i></a>
                     </li>
                     <li class="nav-item">
                         

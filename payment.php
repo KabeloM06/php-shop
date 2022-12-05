@@ -1,14 +1,7 @@
 <?php
 session_start();
 
-if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
-    //let user into page
 
-}else{
-    //send user to homepage
-    header('location: index.php');
-
-}
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +29,7 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
             <div class="collapse navbar-collapse nav-buttons nowrap" id="navbarMain">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="index.php" class="nav-link">Home</a>
+                        <a href="index.html" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="shop.html" class="nav-link">Shop</a>
@@ -48,7 +41,7 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
                         <a href="contact.html" class="nav-link">Conctact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="cart.php"><i class="fa fa-shopping-cart"></i></a>
+                        <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
                         <a href="account.html"><i class="fas fa-user"></i></a>
                     </li>
                     <li class="nav-item">
@@ -60,40 +53,18 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
     </nav>
     <!--Nav Start-->
 
+
+
     <!--Payment Start-->
     <section class="my-5 py-5">
         <div class="container text-center mt-3 pt-5">
-            <h2 class="form-weight-bold">Check Out</h2>
+            <h2 class="form-weight-bold">Payment</h2>
             <hr class="mx-auto">
         </div>
-        <div class="mx-auto container">
-            <form id="checkout-form" action="server/place_order.php" method="POST">
-                <div class="form-group checkout-small">
-                    <label>Name</label>
-                    <input id="checkout-name" type="text" class="form-control" name="name" placeholder="Name" required>
-                </div>
-                <div class="form-group checkout-small">
-                    <label>Email</label>
-                    <input id="checkout-email" type="text" class="form-control" name="email" placeholder="email" required>
-                </div>
-                <div class="form-group checkout-small">
-                    <label>Phone</label>
-                    <input id="checkout-phone" type="tel" class="form-control" name="phone" placeholder="Phone" required>
-                </div>
-                <div class="form-group checkout-small">
-                    <label>City</label>
-                    <input id="chekout-city" type="text" class="form-control" name="city" placeholder="City" required>
-                </div>
-                <div class="form-group checkout-large">
-                    <label>Address</label>
-                    <input id="chekout-address" type="text" class="form-control" name="address" placeholder="Address" required>
-                </div>
-                <div class="form-group checkout-btn-container">
-                    <p class="total-text">Order Total: <span>R <?php echo $_SESSION['total']?></span></p>
-                    <input id="checkout-btn" type="submit" class="btn" value="Place Order" name="place_order">
-                </div>
-                
-            </form>
+        <div class="mx-auto container text-center">
+            <p><?php echo $_GET['order_status']?></p>
+            <p>Total: R <?php echo $_SESSION['total']?></p>
+            <input type="submit" class="btn btn-dark" value="Pay Now">
         </div>
     </section>
     <!--Payment End-->
