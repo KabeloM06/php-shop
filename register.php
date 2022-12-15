@@ -1,3 +1,64 @@
+<?php
+session_start();
+
+include('server/connection.php');
+if(isset($_POST['register'])){
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
+
+    // check if password is equal to confirm password
+    if($password!==$confirmPassword){
+        header('location: register.php?error=passwords do not match');
+    }
+
+    // check password length
+    else if(strlen($password) < 8){
+        header('location: register.php?error=password must be at least 8 characters long');
+    }
+    //if there is no error
+    else{
+
+    //check if user already exists
+    $user_already_exist_stmt = $conn->prepare("SELECT count(*) FROM `users` WHERE user_email=?");
+
+    $user_already_exist_stmt->bind_param('s',$email);
+    $user_already_exist_stmt-> execute();
+    $user_already_exist_stmt-> bind_result($num_rows);
+    $user_already_exist_stmt->store_result();
+    $user_already_exist_stmt->fetch();
+
+    if($num_rows != 0){//num_rows will return a number if there is a matching email
+        header('location: register.php?error=user already exists');
+    } else{//if there is no user with the email
+
+    //Create a new user
+    $stmt = $conn->prepare("INSERT INTO `users` (user_name, user_email,user_password) VALUES (?,?,?)");
+
+    $stmt->bind_param('sss',$name,$email,md5($password));
+
+    //if accout is created successfully
+    if($stmt->execute()){
+        $_SESSION['user_email'] = $email;
+        $_SESSION['user_name'] = $name;
+        $_SESSION['logged_in'] = true;
+
+        header('location: account.php?register=Ypu registered successfully');
+    //if account was not able to be created
+    } else{
+        header('location: register.php?error=Could not create the account'); 
+    }
+}
+}
+//if user is already registered, take user to account page
+}else if(isset($_SESSION['logged_in'])){
+    header('location: account.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,8 +115,9 @@
             <hr class="mx-auto">
         </div>
         <div class="mx-auto container">
-            <form id="registration-form" action="">
-                <div class="form-group">
+            <form id="registration-form" action="register.php" method="POST">
+            <p class="text-danger"><?php if(isset($_GET['error'])){ echo $_GET['error'];}?></p>    
+            <div class="form-group">
                     <label>Name</label>
                     <input id="register-name" type="text" class="form-control" name="name" placeholder="Name" required>
                 </div>
@@ -73,11 +135,11 @@
                 </div>
                 <div class="form-group">
                     
-                    <input id="register-btn" type="submit" class="btn" value="Register">
+                    <input id="register-btn" type="submit" class="btn" value="Register" name="register">
                 </div>
                 <div class="form-group">
                     
-                    <a href="" class="btn" id="login-url">Already have an acount? Login.</a>
+                    <a href="login.php" class="btn" id="login-url">Already have an acount? Login.</a>
                 </div>
             </form>
         </div>
