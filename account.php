@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3">
         <div class="container">
             <div>
-                <a href="index.html" class="navbar-brand">ShopItAll</a>
+                <a href="index.php" class="navbar-brand">ShopItAll</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse nav-buttons nowrap" id="navbarMain">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="shop.html" class="nav-link">Shop</a>
@@ -36,7 +36,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
-                        <a href="account.html"><i class="fas fa-user"></i></a>
+                        <a href="account.php"><i class="fas fa-user"></i></a>
                     </li>
                     <li class="nav-item">
                         
