@@ -91,8 +91,8 @@ if(isset($_POST['login_btn'])){
             <hr class="mx-auto">
         </div>
         <div class="mx-auto container">
-            <form id="login-form text-danger" action="login.php" method="POST">
-                <p class="text-center"><?php if(isset($_GET['error'])){echo $_GET['error'];}?></p>
+            <form id="login-form" action="login.php" method="POST">
+                <p class="text-center  text-danger"><?php if(isset($_GET['error'])){echo $_GET['error'];}?></p>
                 <div class="form-group">
                     <label>Email</label>
                     <input id="login-email" type="text" class="form-control" name="email" placeholder="email" required>
