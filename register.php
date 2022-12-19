@@ -2,6 +2,12 @@
 session_start();
 
 include('server/connection.php');
+
+// Take user to account page if already logged in
+if(isset($_SESSION['logged_in'])){
+    header('location: account.php');
+    exit;
+}
 if(isset($_POST['register'])){
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -52,9 +58,6 @@ if(isset($_POST['register'])){
 }
 }
 //if user is already registered, take user to account page
-}else if(isset($_SESSION['logged_in'])){
-    header('location: account.php');
-    exit;
 }
 
 ?>

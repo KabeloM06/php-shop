@@ -3,6 +3,12 @@ session_start();
 
 include('server/connection.php');
 
+// Take user to account page if already logged in
+if(isset($_SESSION['logged_in'])){
+    header('location: account.php');
+    exit;
+}
+
 if(isset($_POST['login_btn'])){
     $email = $_POST['email'];
     $password = md5($_POST['password']);
