@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('server/connection.php');
 
 if(!isset($_SESSION['logged_in'])){
     header('location: login.php');
@@ -13,6 +14,31 @@ if(isset($_GET['logout'])){
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         header('location: login.php');
+    }
+}
+
+if(isset($_POST['change_password'])){
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
+    $user_email = $_SESSION['user_email'];
+
+    // check if password is equal to confirm password
+    if($password!==$confirmPassword){
+        header('location: account.php?error=passwords do not match');
+    }
+
+    // check password length
+    else if(strlen($password) < 8){
+        header('location: account.php?error=password must be at least 8 characters long');
+    }else{//no errors
+        $stmt = $conn->prepare("UPDATE users SET user_password=? WHERE user_email=?");
+        $stmt->bind_param('ss',md5($password),$user_email);
+        
+        if($stmt->execute()){
+            header('location: account.php?message=Password updated successfully');
+        }else{
+            header('location: account.php?error=Password update unsuccessful');
+        }
     }
 }
 
@@ -82,8 +108,14 @@ if(isset($_GET['logout'])){
             </div>
 
             <div class="col-lg-6 col-md-12 col-sm-12">
-                <form id="account-form" action="">
-                    <h3 class="mt-2">Change Password</h3>
+                <form id="account-form" action="account.php" method="POST">
+                <p class="text-center text-danger">
+                    <?php if(isset($_GET['error'])){echo $_GET['error'];}?>
+                </p>
+                <p class="text-center text-success">
+                <?php if(isset($_GET['message'])){echo $_GET['message'];}?>
+                </p>    
+                <h3 class="mt-2">Change Password</h3>
                     <hr class="mx-auto">
                     <div class="form-group">
                         <label for="">Password</label>
@@ -94,7 +126,7 @@ if(isset($_GET['logout'])){
                         <input id="account-password-confirm" type="password" class="form-control" name="confirmPassword" placeholder="password" required>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Change Password" class="btn" id="change-password-btn">
+                        <input type="submit" value="Change Password" class="btn" name="change_password" id="change-password-btn">
                     </div>
                 </form>
             </div>
