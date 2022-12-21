@@ -513,6 +513,11 @@ th:last-child{
 
 }
 
+.orders .order-details-btn {
+    color: white;
+    background-color: rgb(0, 68, 68);
+}
+
 /*Checkout*/
 #checkout-form .checkout-small{
     display: inline-block;

@@ -42,6 +42,18 @@ if(isset($_POST['change_password'])){
     }
 }
 
+// get all of the user's orders
+if(isset($_SESSION['logged_in'])){
+    $user_id = $_SESSION['user_id'];
+
+    $stmt = $conn->prepare("SELECT * FROM `orders` WHERE user_id=?");
+    $stmt->bind_param('i',$user_id);
+
+    $stmt->execute();
+
+    $orders = $stmt->get_result();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -143,24 +155,42 @@ if(isset($_POST['change_password'])){
 
         <table class="mt-5 pt-5">
             <tr>
-                <th>Product</th>
-                <th>Date</th>
+                <th>Order ID</th>
+                <th>Order Cost</th>
+                <th>Order Status</th>
+                <th>Order Date</th>
+                <th>Order Details</th>
                 
             </tr>
+            <?php while($row = $orders->fetch_assoc()) {?>
             <tr>
                 <td>
                     <div class="product-info">
-                        <img src="assets/images/Adventure-Outdoor-Sandals-BROWN-505479460.jpg" alt="">
+                        <!--<img src="assets/images/Adventure-Outdoor-Sandals-BROWN-505479460.jpg" alt="">-->
                         <div>
-                            <p class="mt-3">Sandals</p>
+                            <p class="mt-3"><?php echo $row['order_id'];?></p>
                         </div>
                     </div>
                 </td>
                 <td>
-                    <span>2022-11-20</span>
+                    <span>R <?php echo $row['order_cost'];?></span>
                     
                 </td>
+                <td>
+                    <span><?php echo $row['order_status'];?></span>
+                    
+                </td>
+                <td>
+                    <span><?php echo $row['order_date'];?></span>
+                    
+                </td>
+                <td>
+                    <form>
+                        <input type="submit" class="btn order-details-btn" value="Details">
+                    </form>
+                </td>
             </tr>
+            <?php }?>
             
         </table>
 
