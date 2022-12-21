@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['logged_in'])){
+    header('location: login.php');
+    exit;
+}
+
+//display user info
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,16 +59,16 @@
     </nav>
     <!--Nav Start-->
 
-    <!--Login Start-->
+    <!--user details Start-->
     <section class="mt-5 pt-5">
         <div class="row container mx-auto">
             <div class="text-center mt-3 pt-5 col-lg-6 col-md-12 col-sm-12">
                 <h3 class="font-weight-bold">Account Info</h3>
                 <hr class="mx-auto">
                 <div class="account-info">
-                    <p>Name: <span>Kabelo</span></p>
-                    <p>Email: <span>kabelo@email.com</span></p>
-                    <p><a href="#" id="order-btn">Your orders</a></p>
+                    <p>Name: <span><?php echo$_SESSION['user_name']?></span></p>
+                    <p>Email: <span><?php echo$_SESSION['user_email']?></span></p>
+                    <p><a href="#orders" id="order-btn">Your orders</a></p>
                     <p><a href="#" id="logout-btn">Logout</a></p>
                 </div>
             </div>
@@ -80,10 +92,10 @@
             </div>
         </div>
     </section>
-    <!--Login End-->
+    <!--user details End-->
 
     <!--Orders Start-->
-    <section class="orders container mb-5 pb-5">
+    <section id="orders" class="orders container mb-5 pb-5">
         <div class="container">
             <h2 class="font-weight-bold text-center">Your Orders</h2>
             <hr class="mx-auto">
