@@ -1,14 +1,17 @@
 <?php 
 include('server/connection.php');
 
-if(isset($_GET['order_details_btn']) && isset($_GET['order_id'])){
-    $order_id = $_GET['order_id'];
+if(isset($_POST['order_details_btn']) && isset($_POST['order_id'])){
+    $order_id = $_POST['order_id'];
 
     $stmt = $conn->prepare("SELECT * FROM `order_items` WHERE order_id=?");
     $stmt-> bind_param('i',$order_id);
     $stmt->execute();
 
-    $order_detais = $stmt->get_result();
+    $order_details = $stmt->get_result();
+}else{
+    header('location: account.php');
+    exit;
 }
 
 ?>
@@ -71,7 +74,7 @@ if(isset($_GET['order_details_btn']) && isset($_GET['order_id'])){
             
         </div>
 
-        <table class="mt-5 pt-5">
+        <table class="mt-5 pt-5 mx-auto">
             <tr>
                 <th>Product</th>
                 <th>Price</th>
@@ -80,30 +83,28 @@ if(isset($_GET['order_details_btn']) && isset($_GET['order_id'])){
                 
             </tr>
             
+            <?php while($row= $order_details->fetch_assoc()){ ?>
             <tr>
                 <td>
                     <div class="product-info">
-                        <img src="assets/images/Adventure-Outdoor-Sandals-BROWN-505479460.jpg" alt="">
+                        <img src="assets/images/<?php echo $row['product_image'] ?>" alt="">
                         <div>
-                            <p class="mt-3"></p>
+                            <p class="mt-3"><?php echo $row['product_name'] ?></p>
                         </div>
                     </div>
                 </td>
                 <td>
-                    <span></span>
+                    <span><?php echo $row['product_price'] ?></span>
                     
                 </td>
                 <td>
-                    <span></span>
+                    <span><?php echo $row['product_quantity'] ?></span>
                     
                 </td>
                 
-                <td>
-                    <form>
-                        <input type="submit" class="btn order-details-btn" value="Details">
-                    </form>
-                </td>
+                
             </tr>
+            <?php }?>
 
             
         </table>
