@@ -186,6 +186,7 @@ if(isset($_SESSION['logged_in'])){
                 </td>
                 <td>
                     <form method="POST" action="order_details.php">
+                        <input type="hidden" name="order_status" value="<?php echo $row['order_status']?>">
                         <input type="hidden" name="order_id" value="<?php echo $row['order_id'];?>">
                         <input type="submit" name="order_details_btn" class="btn order-details-btn" value="Details">
                     </form>
