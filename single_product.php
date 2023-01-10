@@ -44,7 +44,7 @@ if(isset($_GET['product_id'])){
                     <a href="index.php" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="shop.html" class="nav-link">Shop</a>
+                    <a href="shop.php" class="nav-link">Shop</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">Blog</a>
@@ -53,8 +53,8 @@ if(isset($_GET['product_id'])){
                     <a href="contact.html" class="nav-link">Conctact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                    <a href="account.html"><i class="fas fa-user"></i></a>
+                    <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="account.php"><i class="fas fa-user"></i></a>
                 </li>
                 <li class="nav-item">
                     
